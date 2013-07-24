@@ -40,7 +40,7 @@ the Authentication and App.router.  It needs the user, model, and request;
 
 ## Example:
 
-```
+``` js
 var cando = require('cando');
 
 cando
