@@ -36,7 +36,7 @@ the user, model, and request.
        
 
 Here is a diagram of the middleware stack, the CanDo module should be placed between 
-the Authentication and App.router.  It needs the user, model, and reference (url);
+the Authentication and App.router.  It needs the user, model, and request;
 
 ## Example:
 
