@@ -1,8 +1,9 @@
 # CanDo
 
-This module creates a middleware handler for matching and authorizing routes.  
-In order to perform an authorization for a given user, you must have access to 
-the user, model, and request.
+This module creates a dynamic handler for matching and authorizing routes.  
+
+In order, to perform an authorization for a given user, you must have access to 
+the user, model, url, and method.
 
 
        +-------------------------+
@@ -35,8 +36,10 @@ the user, model, and request.
        +-------------------------+
        
 
-Here is a diagram of the middleware stack, the CanDo module should be placed between 
-the Authentication and App.router.  It needs the user, model, and request;
+Here is a diagram of the middleware stack, the CanDo module can be placed between 
+the Authentication and App.router.  It needs the user, model, url, and method;
+
+The concept behind the `cando` module is to give you the ability to create custom based authorization rules in a sharable javascript file that can be provided to both the server and the client.  THis way our authorization rules are in one place and applied to the front-end to hide and show functionality and applied to the back-end to allow or deny actions.
 
 ## Example:
 
@@ -86,7 +89,7 @@ app.use(function(req, res, next) {
 
 # Cando
  
-Is an autorization module that includes a micro router for matching
+Is an authorization module that includes a micro-router for matching
 defined routes and providing authorization logic to confirm the 
 user has the right to execute the requested api function.
 
@@ -94,8 +97,8 @@ There are two endpoints, #define and #verify.
 
 ## define(pattern, [method], fn)
 
-define takes a url pattern, a optional verb array, if null, then it 
-is assumed you want to match against all verbs, currently the default
+[define] takes a url pattern, a optional verb array, if null, then it 
+is assumed you want to match against all verbs, and is the default
 verbs are GET, POST, PUT, DELETE.
 the last parameter is the function you want to be invoked on match
 in that function you will have access to the following:
@@ -111,11 +114,14 @@ in that function you will have access to the following:
 
 ### verify(data, fn)
 
-verify is the function that performs the match against all of your defined
-patterns.  So you normally call this in the middleware stack or before you
-want to execute your application code.
+[verify] is the function that performs the match against all of your defined
+patterns.  So you normally call this in the middleware stack or on the client before you want to execute your application code.
 
 ---
+
+## Browserfied version is in the root dir
+
+* cando.js
 
 ## Thanks
 
