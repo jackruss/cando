@@ -100,10 +100,11 @@ verbs are GET, POST, PUT, DELETE.
 the last parameter is the function you want to be invoked on match
 in that function you will have access to the following:
 
-* this.user object if set
-* this.model object if set
-* this.req object 
-* this.params if using colon patterns
+* this.user [object] if set
+* this.model [object] if set
+* this.url [string] - url of the request
+* this.method [string] - method of the request
+* this.params [object] if using colon patterns
 * this.set is the function you call to specify if the request is authorized
  or not.  this.allow() or this.deny();
 * this.next to continue to the next match

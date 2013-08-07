@@ -16,7 +16,8 @@ describe('CanDo', function() {
   it('should allow role of admin for GET /foo', function(done) {
     cando.verify({
       user: { role: 'admin'},
-      req: { url: '/foo', method: 'GET'}
+      url: '/foo', 
+      method: 'GET'
     }, function(err, authorized) {
       expect(authorized).to.be(true);
       done();
@@ -25,7 +26,8 @@ describe('CanDo', function() {
   it('should deny role of user for GET /foo', function(done) {
     cando.verify({
       user: { role: 'user'},
-      req: { url: '/foo', method: 'GET'}
+      url: '/foo', 
+      method: 'GET'
     }, function(err, authorized) {
       expect(authorized).to.be(false);
       done();
@@ -35,7 +37,8 @@ describe('CanDo', function() {
     cando.verify({
       user: { id: 1, role: 'user'},
       model: { user_id: 1 },
-      req: { url: '/foo/bar', method: 'GET'}
+      url: '/foo/bar', 
+      method: 'GET'
     }, function(err, authorized) {
       expect(authorized).to.be(true);
       done();
@@ -45,7 +48,7 @@ describe('CanDo', function() {
     cando.verify({
       user: { id: 1, role: 'user'},
       model: { user_id: 2 },
-      req: { url: '/foo/bar', method: 'GET'}
+      url: '/foo/bar', method: 'GET'
     }, function(err, authorized) {
       expect(authorized).to.be(false);
       done();

@@ -16,7 +16,8 @@
 //
 // * this.user object if set
 // * this.model object if set
-// * this.req object 
+// * this.url string
+// * this.method string 
 // * this.params if using colon patterns
 // * this.set is the function you call to specify if the request is authorized
 //   or not.  this.allow() or this.deny();
@@ -50,7 +51,7 @@ exports.define = function(url, verb, fn) {
 };
 
 exports.verify = function(data, cb) {
-  var m = router.match([data.req.method.toUpperCase(), data.req.url].join('/'));
+  var m = router.match([data.method.toUpperCase(), data.url].join('/'));
   // setup cando functions
   m.authorizations = [];
   m.allow = allow;
